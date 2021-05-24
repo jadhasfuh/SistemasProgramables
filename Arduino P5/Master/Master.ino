@@ -19,14 +19,42 @@ void setup() {
 
 void loop() {
 
-  M = 0;
+  M = 'A';
   
   //LECTURA DE LOS TRES INPUTS Y ENVIO
-  if(digitalRead(3) == HIGH) M += 1;
-  if(digitalRead(4) == HIGH) M += 10; 
-  if(digitalRead(5) == HIGH) M += 100;
+  if (digitalRead(3) == LOW   &&
+      digitalRead(4) == LOW   &&
+      digitalRead(5) == LOW   ) M = 'A';
+  else if (
+      digitalRead(3) == HIGH  &&
+      digitalRead(4) == LOW   &&
+      digitalRead(5) == LOW   ) M = 'B';
+  else if (
+      digitalRead(3) == LOW   &&
+      digitalRead(4) == HIGH  &&
+      digitalRead(5) == LOW   ) M = 'C';
+  else if (
+      digitalRead(3) == LOW   &&
+      digitalRead(4) == LOW   &&
+      digitalRead(5) == HIGH  ) M = 'D';
+  else if (
+      digitalRead(3) == HIGH  &&
+      digitalRead(4) == HIGH  &&
+      digitalRead(5) == LOW   ) M = 'E';
+  else if (
+      digitalRead(3) == LOW   &&
+      digitalRead(4) == HIGH  &&
+      digitalRead(5) == HIGH  ) M = 'F';
+  else if (
+      digitalRead(3) == HIGH  &&
+      digitalRead(4) == LOW   &&
+      digitalRead(5) == HIGH  ) M = 'G';
+  else if (
+      digitalRead(3) == HIGH  &&
+      digitalRead(4) == HIGH  &&
+      digitalRead(5) == HIGH  ) M = 'H';
 
   Serial.write(M);
-  delay(20);
+  delay(10);
   
 }

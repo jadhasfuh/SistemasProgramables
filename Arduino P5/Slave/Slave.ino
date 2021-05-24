@@ -3,7 +3,6 @@
 //MEDIOLA CORREA CESAR PAULINO 17420533
 
 //SLAVE PRACTICA 5
-byte M = 0;
 
 void setup() {
 
@@ -18,46 +17,49 @@ void setup() {
 }
 
 void loop() {
-digitalWrite(11, HIGH);
+
+  String M = "B";
+  
   //ACTIVAMOS LO QUE VENGA
-  if(Serial.available() > 0){
-    
-    M = Serial.read();
-    
-    if (M == 0){
-      digitalWrite(11, LOW);
-      digitalWrite(12, LOW);
-      digitalWrite(13, LOW); 
-    }else if (M == 100){
-      digitalWrite(11, HIGH);
-      digitalWrite(12, LOW);
-      digitalWrite(13, LOW); 
-    }else if (M == 10){
-      digitalWrite(11, LOW);
-      digitalWrite(12, HIGH);
-      digitalWrite(13, LOW); 
-    }else if (M == 1){
-      digitalWrite(11, LOW);
-      digitalWrite(12, LOW);
-      digitalWrite(13, HIGH); 
-    }else if (M == 110){
-      digitalWrite(11, HIGH);
-      digitalWrite(12, HIGH);
-      digitalWrite(13, LOW); 
-    }else if (M == 11){
-      digitalWrite(11, LOW);
-      digitalWrite(12, HIGH);
-      digitalWrite(13, HIGH); 
-    }else if (M == 101){
-      digitalWrite(11, HIGH);
-      digitalWrite(12, LOW);
-      digitalWrite(13, HIGH); 
-    }else if (M == 111){
-      digitalWrite(11, HIGH);
-      digitalWrite(12, HIGH);
-      digitalWrite(13, HIGH); 
-    }
-    
+  if(Serial.available() > 0) 
+  M = Serial.read();
+
+  Serial.println(M);
+
+  if (M == 'A'){
+    digitalWrite(11, LOW);
+    digitalWrite(12, LOW);
+    digitalWrite(13, LOW); 
+  }else if (M == 'B'){
+    digitalWrite(11, HIGH);
+    digitalWrite(12, LOW);
+    digitalWrite(13, LOW); 
+  }else if (M == 'C'){
+    digitalWrite(11, LOW);
+    digitalWrite(12, HIGH);
+    digitalWrite(13, LOW); 
+  }else if (M == 'D'){
+    digitalWrite(11, LOW);
+    digitalWrite(12, LOW);
+    digitalWrite(13, HIGH); 
+  }else if (M == 'E'){
+    digitalWrite(11, HIGH);
+    digitalWrite(12, HIGH);
+    digitalWrite(13, LOW); 
+  }else if (M == 'F'){
+    digitalWrite(11, LOW);
+    digitalWrite(12, HIGH);
+    digitalWrite(13, HIGH); 
+  }else if (M.charAt(0) == 'G'){
+    digitalWrite(11, HIGH);
+    digitalWrite(12, LOW);
+    digitalWrite(13, HIGH); 
+  }else if (M == 'H'){
+    digitalWrite(11, HIGH);
+    digitalWrite(12, HIGH);
+    digitalWrite(13, HIGH); 
   }
+
+  delay(10);
   
 }
