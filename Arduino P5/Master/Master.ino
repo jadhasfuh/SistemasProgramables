@@ -3,17 +3,21 @@
 //MEDIOLA CORREA CESAR PAULINO 17420533
 
 //MASTER PRACTICA 5
-byte M;
+//#include <SoftwareSerial.h>
+
+//SoftwareSerial S(2,3);// RX,TX
+char M;
 
 void setup() {
   
   //INICIALIZAMOS LOS COMPONTES
-  pinMode(3, INPUT);
-  pinMode(4, INPUT);
-  pinMode(5, INPUT);
+  pinMode(11, INPUT);
+  pinMode(12, INPUT);
+  pinMode(13, INPUT);
   
   //INICIALIZA SERIAL
   Serial.begin(9600);
+  //S.begin(9600);
   
 }
 
@@ -22,39 +26,24 @@ void loop() {
   M = 'A';
   
   //LECTURA DE LOS TRES INPUTS Y ENVIO
-  if (digitalRead(3) == LOW   &&
-      digitalRead(4) == LOW   &&
-      digitalRead(5) == LOW   ) M = 'A';
+  if (
+      digitalRead(11) == HIGH  &&
+      digitalRead(12) == HIGH  &&
+      digitalRead(13) == LOW   ) M = 'D';
   else if (
-      digitalRead(3) == HIGH  &&
-      digitalRead(4) == LOW   &&
-      digitalRead(5) == LOW   ) M = 'B';
+      digitalRead(11) == LOW   &&
+      digitalRead(12) == HIGH  &&
+      digitalRead(13) == HIGH  ) M = 'B';
   else if (
-      digitalRead(3) == LOW   &&
-      digitalRead(4) == HIGH  &&
-      digitalRead(5) == LOW   ) M = 'C';
+      digitalRead(11) == HIGH  &&
+      digitalRead(12) == LOW   &&
+      digitalRead(13) == HIGH  ) M = 'C';
   else if (
-      digitalRead(3) == LOW   &&
-      digitalRead(4) == LOW   &&
-      digitalRead(5) == HIGH  ) M = 'D';
-  else if (
-      digitalRead(3) == HIGH  &&
-      digitalRead(4) == HIGH  &&
-      digitalRead(5) == LOW   ) M = 'E';
-  else if (
-      digitalRead(3) == LOW   &&
-      digitalRead(4) == HIGH  &&
-      digitalRead(5) == HIGH  ) M = 'F';
-  else if (
-      digitalRead(3) == HIGH  &&
-      digitalRead(4) == LOW   &&
-      digitalRead(5) == HIGH  ) M = 'G';
-  else if (
-      digitalRead(3) == HIGH  &&
-      digitalRead(4) == HIGH  &&
-      digitalRead(5) == HIGH  ) M = 'H';
+      digitalRead(11) == HIGH  &&
+      digitalRead(12) == HIGH  &&
+      digitalRead(13) == HIGH  ) M = 'A';
 
   Serial.write(M);
-  delay(10);
+  delay(50);
   
 }

@@ -32,7 +32,7 @@
      <ITEM name="nItems">0</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="30" x="88" flags="00000008" y="200" h="16" pid="3" iid="1">
+   <POPUP w="258" x="88" flags="00000008" y="200" h="255" pid="3" iid="1">
     <PROPERTIES/>
    </POPUP>
    <POPUP w="8" x="108" flags="0000000a" y="220" h="1" pid="10" iid="1">
@@ -123,7 +123,7 @@
      <ITEM name="nItems">0</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="30" x="268" flags="00000008" y="380" h="16" pid="3" iid="2">
+   <POPUP w="258" x="268" flags="00000008" y="380" h="255" pid="3" iid="2">
     <PROPERTIES/>
    </POPUP>
    <POPUP w="8" x="288" flags="0000000a" y="400" h="1" pid="10" iid="2">
@@ -214,13 +214,13 @@
      <ITEM name="nItems">0</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="836" x="1031" flags="00008023" y="160" h="250" pid="0" iid="14">
+   <POPUP w="836" x="1051" flags="00000023" y="238" h="250" pid="0" iid="14">
     <PROPERTIES>
      <ITEM name="AutoEcho">0</ITEM>
      <ITEM name="HexMode">0</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="611" x="419" flags="00000023" y="161" h="250" pid="0" iid="15">
+   <POPUP w="611" x="348" flags="00008023" y="258" h="250" pid="0" iid="15">
     <PROPERTIES>
      <ITEM name="AutoEcho">0</ITEM>
      <ITEM name="HexMode">0</ITEM>
