@@ -1,51 +1,56 @@
-char msj = 'I';
-char msj2;
+//CEJA RENTERIA ADRIAN 17420533
+//IXTA ZAMUDIO LUIS JOSE 17420533
+//MEDIOLA CORREA CESAR PAULINO 17420533
 
-void setup() {
+//MASTER PRACTICA 1.2
+#include <Wire.h>
+
+byte M = 0;
+
+void setup(){
+
+  //INICIALIZAMOS COMUNICACION
   Serial.begin(9600);
-  pinMode(13,OUTPUT);
+  //INICIALIZAMOS BUS COMO MASTER SIN DIRECCION
+  Wire.begin();   
+  //INICIALIZAMOS LOS COMPONTES
+  pinMode(13, OUTPUT);
+           
 }
 
-void loop() {
-  if(Serial.available() > 0) {
-    msj = Serial.read();
-    enviarMessage(msj);
-    //delay(1000);
-    msj2 = Serial.read();
-    leerMensaje(msj);
-    /*if(msj == 'O')
-      msj = 'I';
-    else
-      if(msj == 'I')
-        msj = 'O';*/
+void loop(){
 
-    /*msj = Serial.read();
-    on_off_LED(msj);*/
+  //INICIAMOS TRANMISION 
+  Wire.beginTransmission(0x08);
+  
+  //ENVIA AL ESCLAVO
+  if (M == 1){
+    M = 0;
+    Wire.write(M);
+  }else if (M == 0) {
+    M = 1;
+    Wire.write(M);
   }
-}
+  Serial.print("MASTER ENVIA: ");
+  Serial.println(M);
+  
+  delay(100);
+  
+  //TERMINAMOS TRANMISION 
+  Wire.endTransmission(); 
 
-void enviarMessage(char msj) {
-  if(msj == 'I')
-      msj = 'I';
-    else
-      if(msj == 'O')
-        msj = 'O';
-  Serial.write(msj);
-}
+  //PEDIMOS INFO
+  Wire.requestFrom(0x08, 1);
 
-void leerMensaje(char msj2) {
-  if(msj2 == 'I')
-    digitalWrite(13,HIGH);
-  else
-    if(msj2 == 'O')
-      digitalWrite(13,LOW);
-}
+  //LEE AL ESCLAVO
+  while(Wire.available()) M = Wire.read();
+   
+  Serial.print("MASTER RECIVE: ");
+  Serial.println(M);
+  
+  if (M == 1) digitalWrite(13,HIGH);
+  else if (M == 0) digitalWrite(13,LOW);
 
-/*void on_off_LED(char msj) {
-  if(msj == 'I' || msj == 'i') {
-    Serial.print("ON_");
-  }else
-    if(msj == 'O' || msj == 'o') {
-      Serial.print("OFF_");
-  }
-}*/
+  delay(1000);
+  
+}
