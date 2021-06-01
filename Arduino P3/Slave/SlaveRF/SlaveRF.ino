@@ -18,18 +18,17 @@ void setup() {
 void loop() {
   uint8_t buf[VW_MAX_MESSAGE_LEN];
   uint8_t buflen =VW_MAX_MESSAGE_LEN;
-  if (vw_get_message(buf,&buflen))
-  {
-  if (buf[0]=='1'){
-    //ENCIENDE
-    Serial.println('E');
-    digitalWrite(8,HIGH);
-    delay(500);
-  }else{
-    //APAGA
-    Serial.println('A');
-    digitalWrite(8,LOW);
-    delay(500);
-  }
+  if (vw_get_message(buf,&buflen)){
+    if (buf[0]=='1'){
+      //ENCIENDE
+      Serial.println('E');
+      digitalWrite(8,HIGH);
+      delay(500);
+    }else{
+      //APAGA
+      Serial.println('A');
+      digitalWrite(8,LOW);
+      delay(500);
+    }
   }
 }
